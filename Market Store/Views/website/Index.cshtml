@@ -1,0 +1,333 @@
+﻿@model Tuple<IEnumerable<Market_Store.Models.Home>, IEnumerable<Market_Store.Models.Store>, IEnumerable<Market_Store.Models.Category>, IEnumerable<Market_Store.Models.Testimonial>, IEnumerable<Market_Store.Models.Aboutu>>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Home_Layout.cshtml";
+}
+
+
+<section id="hero">
+    @foreach (var item1 in Model.Item1)
+    {
+
+        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="background-image: url('/Images/@item1.Imagename1');">
+                    <div class="carousel-container">
+                        <div class="carousel-content animate__animated animate__fadeInUp">
+                            <h2>@item1.Text1 <span>@item1.Text2</span></h2>
+                            <p>@item1.Text3</p>
+
+                            <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename2');">
+                    <div class="carousel-container">
+                        <div class="carousel-content animate__animated animate__fadeInUp">
+                            <h2>@item1.Text2</h2>
+                            <p>@item1.Text4</p>
+                            <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename3');">
+                    <div class="carousel-container">
+                        <div class="carousel-content animate__animated animate__fadeInUp">
+                            <h2>@item1.Text2</h2>
+                            <p> @item1.Text3</p>
+                            <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename4');">
+                    <div class="carousel-container">
+                        <div class="carousel-content animate__animated animate__fadeInUp">
+                            <h2>@item1.Text2</h2>
+                            <p> @item1.Text3</p>
+                            <h5> @item1.Text4</h5>
+
+                            <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-left-arrow" aria-hidden="true"></span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bx bx-right-arrow" aria-hidden="true"></span>
+            </a>
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        </div>
+    }
+</section>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>ALL STORE IN  S-MART STORE</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+
+            </ol>
+        </div>
+
+    </div>
+</section>
+
+<section class="ftco-gallery">
+    <div class=" row">
+        @foreach (var item2 in Model.Item2)
+        {
+            @*<div class="row no-gutters">*@
+
+            <div class="col-md-2 ftco-animate">
+                <div radius="104px" data-testid="image-circle-7" class="css-liwzhd ">
+                    <a href="/website/StoreByCategory/@item2.StoreId" class="col-10">
+                        <div radius="104px" class="css-hrx84x ">
+                            <img height="200" width="200" src="/Images/@item2.StoreImage" alt="" style="border-radius:50%; margin:50px;" class="css-ziidzl col">
+                        </div>
+                        <div font-size="15px" style="color:black;font-weight:bolder;margin-left:90px;text-align:center;" data-testid="title" class="css-16t848y">@item2.StoreName</div>
+                    </a>
+                </div>
+            </div>
+
+            @*</div>*@
+        }
+    </div>
+</section>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>ABOUT S-MART STORE</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+
+            </ol>
+        </div>
+
+    </div>
+</section>
+
+<section id="about-us" class="about-us">
+    <div class="container">
+        @foreach (var item5 in Model.Item5)
+        {
+
+
+            <div class="row no-gutters">
+                <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                    <img src="/Images/@item5.Imagename2" alt="Alternate Text" />
+
+                </div>
+                <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-up">
+                    <img src="/Images/@item5.Imagename" alt="Alternate Text" />
+
+                </div>
+                <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                    <img src="/Images/@item5.Imagename2" alt="Alternate Text" />
+
+                </div>
+                <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-up">
+                    <img src="/Images/@item5.Imagename" alt="Alternate Text" />
+
+                </div>
+                <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+                    <div class="content d-flex flex-column justify-content-center">
+
+
+                        <div class="row">
+                            <div class="col-md-6 icon-box" data-aos="fade-up">
+
+                                <p>@item5.TextA</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 icon-box" data-aos="fade-up">
+
+                                <p>@item5.TextB</p>
+
+                            </div>
+                        </div>
+
+                    </div> <!-- End .content-->
+                </div>
+            </div>
+
+        }
+
+    </div>
+</section><!-- End About Us Section -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>LOCATION S-MART STORE</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+
+            </ol>
+        </div>
+
+    </div>
+</section>
+<iframe class="col-md-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d433868.0837108358!2d35.66743328283859!3d31.836036761128852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5fb85d7981af%3A0x631c30c0f8dc65e8!2sAmman!5e0!3m2!1sen!2sjo!4v1650630505494!5m2!1sen!2sjo" width="6000" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Contact</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+
+            </ol>
+        </div>
+
+    </div>
+</section>
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="row justify-content-center" data-aos="fade-up">
+
+            <div class="col-lg-12">
+
+                <div class="info-wrap">
+                    <div class="row">
+                        <div class="col-lg-4 info">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>Jordan-Amman</p>
+                        </div>
+
+                        <div class="col-lg-4 info mt-4 mt-lg-0">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>husseintalatabu85@gmail.com</p>
+                        </div>
+
+                        <div class="col-lg-4 info mt-4 mt-lg-0">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p>+962798329453</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5 justify-content-center" data-aos="fade-up">
+            <div class="col-lg-12">
+                <form asp-action="Contact" asp-controller="website" class="col-md-12 pr-md-12">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" placeholder=" Your Phone" name="phone" id="phone" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="date" class="form-control" placeholder="Your Date" name="date" id="date" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="description" id="description" rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    @*<div class="form-group mt-3">
+                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5 text-center">
+                        </div>*@
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Category</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+
+            </ol>
+        </div>
+
+    </div>
+</section>
+<section id="about-us" class="about-us">
+    <div class="container ">
+        <div class="row" style="padding:5px;">
+            @foreach (var item3 in Model.Item3)
+            {
+
+                <div class="col no-gutters">
+                    <div class="images col-xl-2 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                        <img src="/Images/@item3.Imagename" alt="Alternate Text" width="300" height="300" />
+
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Testimonials</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+                
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item4 in Model.Item4)
+            {
+
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="testimonial-item mt-4">
+                        <img src="/Images/@item4.Customer.Imagename" class="testimonial-img" alt="">
+                        <h3>@item4.Customer.CustFname</h3>
+
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            @item4.Masseges
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->

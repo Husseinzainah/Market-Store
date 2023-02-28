@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S-Mart Store Checkout</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+
+    <!-- Demo CSS (No need to include it into your project) -->
+    <link rel="stylesheet" href="/Checkout/css/demo.css">
+
+</head>
+<body>
+    <header class="intro">
+       
+        
+
+    </header>
+
+    <main>
+
+        <!-- DEMO HTML -->
+        <div class="container">
+            <div class="py-5 text-center">
+
+                <h2>S-Mart Store</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    
+                    <form class="card p-2" asp-action="visa" method="post" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Promo code">
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Billing address</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="type">Visa Type</label>
+                                <input type="text" class="form-control" id="type" name="type" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid Visa is required.
+                                </div>
+                            </div>
+                          
+                        </div>
+
+                      
+
+                        <div class="mb-3">
+                            <label for="price"> Invoice Price </label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="0.00">
+                            <div class="invalid-feedback">
+                                Please enter a valid Price for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Expiry">Expiry Date</label>
+                            <input type="date" class="form-control" id="exp" name="exp"  required>
+                            <div class="invalid-feedback">
+                                Please enter your shipping expiry date card.
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                           
+                        
+                            <div class="col-md-3 mb-3">
+                                <label for="zip">Zip</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        
+
+                    
+                       
+                       
+                     
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                    </form>
+                </div>
+            </div>
+
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">&copy; 2022 H.T.Z</p>
+               
+            </footer>
+        </div>
+        <!-- End Demo HTML -->
+
+    </main>
+
+    <footer class="credit">Author: Manasseh El Bey - Distributed By: <a title="Awesome web design code & scripts" href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
+
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

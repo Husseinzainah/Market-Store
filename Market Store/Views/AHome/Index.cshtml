@@ -1,0 +1,70 @@
+﻿@*@model  IEnumerable<Market_Store.Models.Contact>*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+
+    var customer = ViewBag.countofcustomer;
+    var store = ViewBag.countofstore;
+    var Product = ViewBag.countofcontact;
+    var Total = ViewBag.totalofsale;
+    var nameadmin = ViewBag.AdminName;
+}
+<h5>  Name of Admin: @nameadmin</h5>
+<a href="/Customers/Details/@nameadmin">Profile</a>
+
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon" style="background-color:darkseagreen">
+                <div class="card-icon">
+                    <i class="fa fa-address-book" style="font-size:40px; font-weight:bolder;color:gold"></i>
+                    @*<i class="fa fa-user-circle" aria-hidden="true" style="font-size:40px; font-weight:bolder;color:gold"></i>*@
+                    <!-- <i class="material-icons custom">accessibility</i>-->
+                </div>
+                <p class="card-category" style="color:white; font-weight:bolder;">Number Of Customer</p>
+                <h3 class="card-title" style="color:white;">
+                    @customer
+
+                </h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon" style="background-color:red;">
+                <div class="card-icon">
+                    <i class='fas fa-store-alt' style='font-size: 48px; color: dodgerblue' aria-hidden="true"></i>
+                </div>
+                <p class="card-category" style="color:white; font-weight:bolder;">Number of Store</p>
+                <h3 class="card-title" style="color:white;">@store</h3>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon" style="background-color:cornflowerblue;">
+                <div class="card-icon">
+                    <i class="fa fa-calendar" style="font-size:40px;color:red; align-items:center;"></i>
+                </div>
+                <p class="card-category" style="color:white; font-weight:bolder;">Number Of Product</p>
+                <h3 class="card-title" style="color:white">@Product</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon" style="background-color:gold;">
+                <div class="card-icon">
+                    <i class='fas fa-money-bill-alt' style='font-size: 48px; color: darkseagreen'></i>
+                </div>
+                <p class="card-category" style="color:white; font-weight:bolder;">Total Sale</p>
+                <h3 class="card-title" style="color:white">@Total</h3>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Market_Store.Models.Productcustomer>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header card-header-warning">
+            <h4 class="card-title">Product Customer</h4>
+            <p class="card-category"></p>
+        </div>
+        <div class="card-body table-responsive">
+            <form action="Search" method="Post">
+                <input type="date" name="dateFrom" />
+                <input type="date" name="dateTo" />
+                <button type="submit"> Search </button>
+            </form>
+
+
+
+
+            <table class="table" id="tableData">
+                <thead>
+                    <tr>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+
+                        <th>
+                            Date from
+                        </th>
+                        <th>
+                            Date to
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cust.CustFname+item.Cust.CustLname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pro.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Datefrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dateto)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<button id="export" class="btn btn-success text-white ">Excel</button>
+<button id="export1" onclick="exportTableToCSV('members.csv')" class="btn btn-danger" hidden>CSV</button>
+<button class="btn btn-danger" onclick="printTable();"><span class="glyphicon glyphicon-print"></span> Print</button>
+<div class="card-block table-border-style">
+    <div class="table-responsive">
+        <table class="table table-hover" id="tableData">
+
+            <thead>
+
+                <script>
+                    function exportTableToCSV(filename) {
+                        var csv = [];
+                        var rows = document.querySelectorAll("table tr");
+                        for (var i = 0; i < rows.length; i++) {
+                            var row = [], cols = rows[i].querySelectorAll("td, th");
+                            for (var j = 0; j < cols.length; j++)
+                                row.push(cols[j].innerText);
+                            csv.push(row.join(","));
+                        }
+
+                        downloadCSV(csv.join("\n"), filename);
+                    }
+
+                    function downloadCSV(csv, filename) {
+                        var csvFile;
+                        var downloadLink;
+
+                        csvFile = new Blob([csv], { type: "text/csv" });
+
+                        downloadLink = document.createElement("a");
+
+                        downloadLink.download = filename;
+                        downloadLink.href = window.URL.createObjectURL(csvFile);
+
+                        downloadLink.style.display = "none";
+
+                        document.body.appendChild(downloadLink);
+
+                        downloadLink.click();
+                    }
+
+                    document.getElementById('export').onclick = function () {
+                        var tableId = document.getElementById('tableData').id;
+                        htmlTableToExcel(tableId, filename = '');
+                    }
+                    var htmlTableToExcel = function (tableId, fileName = '') {
+                        var downloadedFileName = 'excel_table_data';
+                        var TableDataType = 'application/vnd.ms-excel';
+                        var selectTable = document.getElementById(tableId);
+                        var htmlTable = selectTable.outerHTML.replace(/ /g, '%20');
+
+                        filename = filename ? filename + '.xls' : downloadedFileName + '.xls';
+                        var downloadingURL = document.createElement("a");
+                        document.body.appendChild(downloadingURL);
+
+                        if (navigator.msSaveOrOpenBlob) {
+                            var blob = new Blob(['\ufeff', htmlTable], {
+                                type: TableDataType
+                            });
+                            navigator.msSaveOrOpenBlob(blob, fileName);
+                        } else {
+
+                            downloadingURL.href = 'data:' + TableDataType + ', ' + htmlTable;
+                            downloadingURL.download = fileName;
+                            downloadingURL.click();
+                        }
+                    }
+
+                    function printTable() {
+                        var el = document.getElementById("tableData");
+
+                        el.setAttribute('border', '5px');
+                        el.setAttribute('cellpadding', '5');
+                        el.setAttribute('color', 'green');
+                        newPrint = window.open("");
+                        newPrint.document.write(el.outerHTML);
+                        newPrint.print();
+                        newPrint.close();
+                    }</script>
+            </thead>
+        </table>
+    </div>
+</div>
+
+

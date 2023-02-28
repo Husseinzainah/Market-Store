@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Market_Store.Models.Category>
+
+@{
+    ViewData["Title"] = "StoreByCategory";
+    Layout = "~/Views/Shared/Home_Layout.cshtml";
+}
+
+
+<section class="ftco-gallery">
+    <div class=" row">
+        @foreach (var item in Model)
+        {
+            @*<div class="row no-gutters">*@
+
+            <div class="col-md-2 ftco-animate">
+                <div radius="104px" data-testid="image-circle-7" class="css-liwzhd ">
+                    <a href="/website/CategoryByProduct/@item.CategoryId" class="col-10">
+                        <div radius="104px" class="css-hrx84x ">
+                            <img height="200px" width="200px" src="/Images/@item.Imagename" alt="" style="border-radius:50%;" class="css-ziidzl col">
+                        </div>
+                        <div font-size="15px" style="color:black;font-weight:bolder;text-align:center" data-testid="title" class="css-16t848y">@item.CategoryName</div>
+                    </a>
+                </div>
+            </div>
+
+            @*</div>*@
+        }
+    </div>
+</section>

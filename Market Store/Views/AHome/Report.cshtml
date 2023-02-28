@@ -1,0 +1,173 @@
+﻿@model Tuple<IEnumerable<Market_Store.Models.JoinTable>, IEnumerable<Market_Store.Models.Productcustomer>>
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+<div class="container">
+
+
+
+    <div class="p-3 mb-2 bg-dark text-white text-center font-weight-bold">Report 1</div>
+
+
+
+    <div class="row">
+        <div class="col-6">
+            <form action="Report" method="post">
+                <input type="date" class="form-control" name="startDate" placeholder="Start Date">
+                <input type="date" class="form-control" name="endDate" placeholder="End Date">
+
+
+
+                <button type="submit" class="btn btn-dark">Search</button>
+
+
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <table class="table example">
+                <thead>
+                    <tr>
+                        <th>
+                             First Name
+                        </th>
+                        <th>
+                           Last Name
+                        </th>
+                        <th>
+                            Appointment Name
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Date From
+                        </th>
+                        <th>
+                            Date To
+                        </th>
+                    </tr>
+                </thead>
+
+
+
+                <tbody>
+                    @foreach (var item in Model.Item2)
+                    {
+                        <tr>
+                            <td> @Html.DisplayFor(modelItem => item.Cust.CustFname)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Cust.CustLname)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Pro.ProductName)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Quantity)</td>
+                            <td> @(item.Quantity * item.Pro.ProductPrice)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Datefrom)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Dateto)</td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+
+
+
+                <tfoot>
+                    <tr>
+                        <td>Total Quantity</td>
+                        <td>@ViewBag.TotalQuantity</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total Price</td>
+                        <td>@ViewBag.TotalPrice</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+
+        </div>
+    </div>
+
+
+
+    <div class="p-3 mb-2 bg-dark text-white text-center font-weight-bold">Report 2</div>
+    <div class="row">
+        <div class="col-10">
+            <table class="table example">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        @*<th>Product Sale</th>*@
+                        <th>Category Name</th>
+                        <th>Product Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Item1)
+                    {
+                        <tr>
+                            <td>@item.customer.CustFname+@item.customer.CustLname</td>
+                            <td>@item.product.ProductSale</td>
+                            <td>@item.category.CategoryName</td>
+                            <td>@item.product.ProductPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+
+
+
+<script>
+$(document).ready(function () {
+$('.example').DataTable({
+dom: 'Bfrtip',
+buttons: [
+'copyHtml5',
+'excelHtml5',
+'csvHtml5',
+'pdfHtml5'
+]
+});
+});
+</script>
+

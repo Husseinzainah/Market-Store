@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Market_Store.Models.Testimonial>
+@{
+    ViewData["Title"] = "Testimonial";
+    Layout = "~/Views/Shared/Home_Layout.cshtml";
+}
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Testimonials</h2>
+            <ol>
+                <li><a asp-action="Index">Home</a></li>
+                <li>Testimonials</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="testimonial-item mt-4">
+                    <img src="/Images/@item.Customer.Imagename" class="testimonial-img" alt="">
+                    <h3>@item.Customer.CustFname</h3>
+                   
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                       @item.Masseges
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->
+ 

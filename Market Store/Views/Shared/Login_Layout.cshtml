@@ -1,0 +1,40 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <title>S-Mart Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/Login/css/style.css">
+   
+</head>
+<body class="img js-fullheight" style="background-image: url('/Login/images/s.jpg');">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+
+                    <h4 class="heading-section">S-MART STORE</h4>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+    </div>
+    <script src="/Login/js/jquery.min.js"></script>
+    <script src="/Login/js/popper.js"></script>
+    <script src="/Login/js/bootstrap.min.js"></script>
+    <script src="/Login/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

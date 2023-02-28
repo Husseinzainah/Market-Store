@@ -1,0 +1,570 @@
+﻿@model Tuple<IEnumerable<Market_Store.Models.Home>, IEnumerable<Market_Store.Models.Store>, IEnumerable<Market_Store.Models.Category>, IEnumerable<Market_Store.Models.Testimonial>, IEnumerable<Market_Store.Models.Aboutu>>
+
+
+@{
+
+    ViewData["Title"] = "Home";
+    Layout = null;
+    List<Store> Store = ViewBag.Store;
+    var User = ViewBag.UserName;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>S-MART STORE</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Flattern - v4.7.0
+    * Template URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Top Bar ======= -->
+    <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+            </div>
+            <div class="social-links d-none d-md-flex align-items-center">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
+
+            <div class="logo">
+                <h1 class="text-light"><a asp-action="Index" asp-controller="OpenUser">S-MART STORE</a></h1>
+
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="active" asp-action="Index" asp-controller="OpenUser">Home</a></li>
+                    <li><a asp-action="About" asp-controller="OpenUser">About</a></li>
+
+                    <li><a asp-action="Testimonial">Testimonial</a></li>
+                    <li><a asp-action="Contact" asp-controller="OpenUser">Contact</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><span>@User</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a asp-action="Dashboard" asp-controller="OpenUser">Dashboard</a></li>
+                            <li class="dropdown">
+                                <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#"></a></li>
+                                    
+                                   
+                                </ul>
+                            </li>
+                            <li><a href="#">Drop Down 2</a></li>
+                            <li><a href="#">Drop Down 3</a></li>
+                            <li><a href="#">Drop Down 4</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+        <div class="advance-search">
+            <form asp-action="search">
+                <div class="row">
+                    <!-- Store Search -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="block d-flex">
+                            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="search" placeholder="Search for store">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="block d-flex">
+                            @*<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for store">*@
+                            <!-- Search Button -->
+                            <button class="btn btn-main">SEARCH</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        @foreach (var item1 in Model.Item1)
+        {
+
+
+            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background-image: url('/Images/@item1.Imagename1');">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>@item1.Text1 <span>@item1.Text2</span></h2>
+                                <p>@item1.Text3</p>
+                                <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename2');">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>@item1.Text1 @item1.Text2</h2>
+                                <p>@item1.Text3</p>
+                                <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename3');">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>@item1.Text1</h2>
+                                <p>@item1.Text2</p>
+                                <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-item" style="background-image: url('/Images/@item1.Imagename4');">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>@item1.Text3</h2>
+                                <p>@item1.Text4</p>
+                                <div class="text-center"><a href="" class="btn-get-started">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bx bx-left-arrow" aria-hidden="true"></span>
+                </a>
+
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bx bx-right-arrow" aria-hidden="true"></span>
+                </a>
+
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            </div>
+        }
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-9 text-center text-lg-left">
+                        <h3>More than 20 years of giving <span>ٍS-MART STORE</span> We are always at the service of the public</h3>
+                        <p> @DateTime.Now.Date</p>
+                    </div>
+                    <div class="col-lg-3 cta-btn-container text-center">
+                        <a class="cta-btn align-middle" href="#">Request a quote</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>ALL STORE IN  S-MART STORE</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="ftco-gallery">
+            <div class=" row">
+                @foreach (var item2 in Model.Item2)
+                {
+                    @*<div class="row no-gutters">*@
+
+                    <div class="col-md-2 ftco-animate">
+                        <div radius="104px" data-testid="image-circle-7" class="css-liwzhd ">
+                            <a href="/OpenUser/StoreByCategory/@item2.StoreId" class="col-10">
+                                <div radius="104px" class="css-hrx84x ">
+                                    <img height="200" width="200" src="/Images/@item2.StoreImage" alt="" style="border-radius:50%; margin:50px;" class="css-ziidzl col">
+                                </div>
+                                <div font-size="15px" style="color:black;font-weight:bolder;margin-left:90px;text-align:center;" data-testid="title" class="css-16t848y">@item2.StoreName</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    @*</div>*@
+                }
+            </div>
+        </section>
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>ABOUT S-MART STORE</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about-us" class="about-us">
+            <div class="container">
+                @foreach (var item5 in Model.Item5)
+                {
+
+
+                    <div class="row no-gutters">
+                        <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                            <img src="/Images/@item5.Imagename2" alt="Alternate Text" />
+
+                        </div>
+                        <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-up">
+                            <img src="/Images/@item5.Imagename" alt="Alternate Text" />
+
+                        </div>
+                        <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                            <img src="/Images/@item5.Imagename2" alt="Alternate Text" />
+
+                        </div>
+                        <div class="images col-xl-5 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-up">
+                            <img src="/Images/@item5.Imagename" alt="Alternate Text" />
+
+                        </div>
+                        <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+                            <div class="content d-flex flex-column justify-content-center">
+
+
+                                <div class="row">
+                                    <div class="col-md-6 icon-box" data-aos="fade-up">
+
+                                        <p>@item5.TextA</p>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 icon-box" data-aos="fade-up">
+
+                                        <p>@item5.TextB</p>
+
+                                    </div>
+                                </div>
+
+                            </div> <!-- End .content-->
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </section><!-- End About Us Section -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>LOCATION S-MART STORE</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <iframe class="col-md-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d433868.0837108358!2d35.66743328283859!3d31.836036761128852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5fb85d7981af%3A0x631c30c0f8dc65e8!2sAmman!5e0!3m2!1sen!2sjo!4v1650630505494!5m2!1sen!2sjo" width="6000" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Contact</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="row justify-content-center" data-aos="fade-up">
+
+                    <div class="col-lg-12">
+
+                        <div class="info-wrap">
+                            <div class="row">
+                                <div class="col-lg-4 info">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <h4>Location:</h4>
+                                    <p>Jordan-Amman</p>
+                                </div>
+
+                                <div class="col-lg-4 info mt-4 mt-lg-0">
+                                    <i class="bi bi-envelope"></i>
+                                    <h4>Email:</h4>
+                                    <p>husseintalatabu85@gmail.com</p>
+                                </div>
+
+                                <div class="col-lg-4 info mt-4 mt-lg-0">
+                                    <i class="bi bi-phone"></i>
+                                    <h4>Call:</h4>
+                                    <p>+962798329453</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-5 justify-content-center" data-aos="fade-up">
+                    <div class="col-lg-12">
+                        <form asp-action="Contact" asp-controller="OpenUser" class="col-md-12 pr-md-12">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" placeholder=" Your Phone" name="phone" id="phone" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="date" class="form-control" placeholder="Your Date" name="date" id="date" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="description" id="description" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            @*<div class="form-group mt-3">
+                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5 text-center">
+                            </div>*@
+                            <div class="text-center"><button type="submit">Send Message</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Category</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <section id="about-us" class="about-us">
+            <div class="container ">
+                <div class="row" style="padding:5px;">
+                    @foreach (var item3 in Model.Item3)
+                    {
+
+                        <div class="col no-gutters">
+                            <div class="images col-xl-2 d-flex align-items-stretch justify-content-centers justify-content-lg-starts" data-aos="fade-right">
+                                <img src="/Images/@item3.Imagename" alt="Alternate Text" width="300" height="300" />
+
+                            </div>
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </section>
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Testimonials</h2>
+                    <ol>
+                        <li><a asp-action="Index">Home</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+
+                <div class="row">
+
+                    @foreach (var item4 in Model.Item4)
+                    {
+
+
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                            <div class="testimonial-item mt-4">
+                                <img src="/Images/@item4.Customer.Imagename" class="testimonial-img" alt="">
+                                <h3>@item4.Customer.CustFname</h3>
+
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    @item4.Masseges
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </section><!-- End Testimonials Section -->
+        <footer id="footer">
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h3>Flattern</h3>
+                            <p>
+                                A108 Adam Street <br>
+                                New York, NY 535022<br>
+                                United States <br><br>
+                                <strong>Phone:</strong> +1 5589 55488 55<br>
+                                <strong>Email:</strong> info@example.com<br>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 footer-newsletter">
+                            <h4>Join Our Newsletter</h4>
+                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container d-md-flex py-4">
+
+                <div class="me-md-auto text-center text-md-start">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Flattern</span></strong>. All Rights Reserved
+                    </div>
+                    <div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/ -->
+                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+                </div>
+                <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+        <!-- Vendor JS Files -->
+        <script src="/assets/vendor/aos/aos.js"></script>
+        <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

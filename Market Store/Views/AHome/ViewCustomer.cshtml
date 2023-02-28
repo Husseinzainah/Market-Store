@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<Market_Store.Models.Customer>
+@{
+    ViewData["Title"] = "ViewContact";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+<style>
+    th {
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    tr:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">All Customer</h4>
+                        <p class="card-category">  View Customer </p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="tableData">
+                                <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Password
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                    Image
+                                </th>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                @item.CustId
+                                            </td>
+                                            <td>
+                                                @item.CustFname
+                                            </td>
+                                            <td>
+                                                @item.CustLname
+                                            </td>
+                                            <td>
+                                                @item.Email
+                                            </td>
+                                            <td>
+                                                @item.Password
+
+                                            </td>
+                                            <td>
+                                                @item.Phone
+                                            </td>
+                                            <td>
+                                                @item.Imagename
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

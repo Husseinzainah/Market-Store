@@ -1,0 +1,72 @@
+﻿@model Market_Store.Models.Login
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/Login_Layout.cshtml";
+
+
+ }
+@*<form asp-action="Login" enctype="multipart/form-data"  class="signin-form">
+    <input asp-for="Username" placeholder=" Your Name"  class="form-group"/>
+    <input asp-for="Password" placeholder="Your Password" class="form-group" />
+    <input type="submit" value="Login" class="form-control btn btn-primary submit px-3">
+
+
+</form>*@
+
+
+
+        @*<div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h2 class="heading-section">Login </h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                  
+                    <form  asp-action="Login" enctype="multipart/form-data"  class="signin-form">
+                        <div class="form-group">
+                            <input  asp-for="Username" placeholder=" Your Name"  class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <input  asp-for="Password" placeholder="Your Password" class="form-group" type="password">
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="form-control btn btn-primary submit px-3">
+                        </div>
+                       
+                    </form>
+                   
+                    
+                </div>
+            </div>
+        </div>*@
+ 
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    @*<h3 class="mb-4 text-center">Sign In </h3>*@
+                    <form class="signin-form" asp-action="Login" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input asp-for="Username" class="form-control" placeholder="User Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input asp-for="Password" class="form-control" placeholder="Password" required type="password">
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group   col-6">
+                                <input type="submit" value="Login" class="form-control btn btn-primary submit px-3">
+                            </div>
+                            <div class="form-group  col-6">
+                                <a asp-action="Register" asp-controller="LoginAndRegister" class="form-control btn btn-primary submit px-3">register now</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>

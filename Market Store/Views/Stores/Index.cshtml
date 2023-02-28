@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Market_Store.Models.Store>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<style>
+    th {
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    tr:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+<div class="card-header card-header-primary">
+    <h4 class="card-title ">Mange Store</h4>
+    <p class="card-category">  Add Store </p>
+</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                StoreName
+            </th>
+            <th>
+                StoreImage
+            </th>
+            <th>
+                StoreLogo
+            </th>
+            <th>
+                StoreDescription
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreName)
+                </td>
+                <td>
+                    <img src="~/Images/@item.StoreImage" width="100px;" height="100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreLogo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreDescription)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StoreId" class="btn btn-dark">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.StoreId" class="btn btn-success">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.StoreId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
